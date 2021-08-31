@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class= "title">
+  <h1>Dear Lena,</h1>
+    </div>
+
+  <div class= "subtitle1">
+   <h2>what is this?</h2>
+   </div>
+
+  <ul><li><a>
+    <form formaction="results.html" method="post">
+      <div>
+        <label for="to">to:</label>
+        <input type="text" name="to" id="to">
+          </div>
+      <p></p>
+      <div>
+        <label for="date">date:</label>
+        <input type="date" name="date" id="date" min="2021-07-30">
+          </div>
+        <p></p>
+      <div>
+        <label for="letter"></label>
+        <textarea name="letter" id="letter" placeholder="write your words here"></textarea>
+      </div>
+      <button type="submit">submit</button>
+      <button type="reset">reset</button>
+
+    </ul> </li> </a>
+
+<span class= "text1">
+  <span> A very late birthday present! But also a way for us to keep talking in an extra way </span> <span>while you're off in France doing great things. </span> <span>I know we have each other's numbers but we suck at texting and I </span> <span> thought letters suit us both better. Of course we can still text and call, </span> <span> this is just a more aesthetic way to talk to each other. I also thought it </span> <span> would make it easier to talk regularly 'cause we can each </span> <span> write a letter for example once every two weeks (or whatever we have time for lol) </span> <span> and dump whatever we have had to say during that time all in one place.
+  </span>
+
+      <?php
+      $servername = "localhost";
+      $username = "username";
+      $password = "password";
+
+      $con = mysqli_connect("localhost","username","password","db_letters");
+
+      $to = $_POST['to'];
+      $date = $_POST['date'];
+      $letter = $_POST['letter'];
+
+      $sql = "INSERT INTO `tbl_letters` (`ID`, `fldTo`, `fldDate`, `fldLetter`, ) VALUES ('0', '$to', '$date', '$letter')";
+      $rs = mysqli_query($con, $sql);
+
+      if($rs)
+      {
+      	echo "Contact Records Inserted";
+      }
